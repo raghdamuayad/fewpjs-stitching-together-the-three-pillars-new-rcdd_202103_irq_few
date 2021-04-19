@@ -1,8 +1,8 @@
 /* This is a file inserted to keep the learn IDE browser happy */
 const testVar = {
-  
+
   submitTryit()
-  
+
   function submitTryit(n) {
     if (window.editor) {
       window.editor.save();
@@ -11,8 +11,8 @@ const testVar = {
     var ifr = document.createElement("iframe");
     ifr.setAttribute("frameborder", "0");
     ifr.setAttribute("id", "iframeResult");
-    ifr.setAttribute("name", "iframeResult");  
-    ifr.setAttribute("allowfullscreen", "true");  
+    ifr.setAttribute("name", "iframeResult");
+    ifr.setAttribute("allowfullscreen", "true");
     document.getElementById("iframewrapper").innerHTML = "";
     document.getElementById("iframewrapper").appendChild(ifr);
     if (loadSave == true ) {
@@ -20,7 +20,7 @@ const testVar = {
     } else if (fileID != "" && loadSave == false) {
       var t=text;
       t=t.replace(/=/gi,"w3equalsign");
-      t=t.replace(/\+/gi,"w3plussign");    
+      t=t.replace(/\+/gi,"w3plussign");
       var pos=t.search(/script/i)
       while (pos>0) {
         t=t.substring(0,pos) + "w3" + t.substr(pos,3) + "w3" + t.substr(pos+3,3) + "tag" + t.substr(pos+6);
@@ -35,11 +35,11 @@ const testVar = {
     } else {
       var ifrw = (ifr.contentWindow) ? ifr.contentWindow : (ifr.contentDocument.document) ? ifr.contentDocument.document : ifr.contentDocument;
       ifrw.document.open();
-      ifrw.document.write(text);  
+      ifrw.document.write(text);
       ifrw.document.close();
       //23.02.2016: contentEditable is set to true, to fix text-selection (bug) in firefox.
       //(and back to false to prevent the content from being editable)
-      //(To reproduce the error: Select text in the result window with, and without, the contentEditable statements below.)  
+      //(To reproduce the error: Select text in the result window with, and without, the contentEditable statements below.)
       if (ifrw.document.body && !ifrw.document.body.isContentEditable) {
         ifrw.document.body.contentEditable = true;
         ifrw.document.body.contentEditable = false;
@@ -54,23 +54,23 @@ const testVar = {
       ic = document.getElementById("iframecontainer");
       t = document.getElementById("textarea");
       i = document.getElementById("iframe");
-      c = document.getElementById("container");    
+      c = document.getElementById("container");
       sv = document.getElementById("stackV");
       sh = document.getElementById("stackH");
       tc.className = tc.className.replace("horizontal", "");
-      ic.className = ic.className.replace("horizontal", "");        
-      t.className = t.className.replace("horizontal", "");        
-      i.className = i.className.replace("horizontal", "");        
-      c.className = c.className.replace("horizontal", "");                        
+      ic.className = ic.className.replace("horizontal", "");
+      t.className = t.className.replace("horizontal", "");
+      i.className = i.className.replace("horizontal", "");
+      c.className = c.className.replace("horizontal", "");
       if (sv) {sv.className = sv.className.replace("horizontal", "")};
       if (sv) {sh.className = sh.className.replace("horizontal", "")};
       stack = "";
       if (horizontal) {
           tc.className = tc.className + " horizontal";
-          ic.className = ic.className + " horizontal";        
-          t.className = t.className + " horizontal";        
-          i.className = i.className + " horizontal";                
-          c.className = c.className + " horizontal";                
+          ic.className = ic.className + " horizontal";
+          t.className = t.className + " horizontal";
+          i.className = i.className + " horizontal";
+          c.className = c.className + " horizontal";
           if (sv) {sv.className = sv.className + " horizontal"};
           if (sv) {sh.className = sh.className + " horizontal"};
           stack = " horizontal";
@@ -84,7 +84,7 @@ const testVar = {
           document.getElementById("iframecontainer").style.height = "100%";
           document.getElementById("textareacontainer").style.width = "50%";
           document.getElementById("iframecontainer").style.width = "50%";
-          currentStack=true;        
+          currentStack=true;
       }
       fixDragBtn();
       showFrameSize();
@@ -102,7 +102,7 @@ const testVar = {
     var textareawidth, leftpadding, dragleft, containertop, buttonwidth
     var containertop = Number(w3_getStyleValue(document.getElementById("container"), "top").replace("px", ""));
     if (stack != " horizontal") {
-      document.getElementById("dragbar").style.width = "5px";    
+      document.getElementById("dragbar").style.width = "5px";
       textareasize = Number(w3_getStyleValue(document.getElementById("textareawrapper"), "width").replace("px", ""));
       leftpadding = Number(w3_getStyleValue(document.getElementById("textarea"), "padding-left").replace("px", ""));
       buttonwidth = Number(w3_getStyleValue(document.getElementById("dragbar"), "width").replace("px", ""));
@@ -112,7 +112,7 @@ const testVar = {
       document.getElementById("dragbar").style.left = dragleft + "px";
       document.getElementById("dragbar").style.height = textareaheight;
       document.getElementById("dragbar").style.cursor = "col-resize";
-      
+
     } else {
       document.getElementById("dragbar").style.height = "5px";
       if (window.getComputedStyle) {
@@ -130,7 +130,7 @@ const testVar = {
       document.getElementById("dragbar").style.top = dragleft + "px";
       document.getElementById("dragbar").style.left = "5px";
       document.getElementById("dragbar").style.width = textareaheight;
-      document.getElementById("dragbar").style.cursor = "row-resize";        
+      document.getElementById("dragbar").style.cursor = "row-resize";
     }
   }
   function dragstart(e) {
@@ -139,9 +139,9 @@ const testVar = {
     var main = document.getElementById("iframecontainer");
   }
   function dragmove(e) {
-    if (dragging) 
+    if (dragging)
     {
-      document.getElementById("shield").style.display = "block";        
+      document.getElementById("shield").style.display = "block";
       if (stack != " horizontal") {
         var percentage = (e.pageX / window.innerWidth) * 100;
         if (percentage > 5 && percentage < 98) {
@@ -160,7 +160,7 @@ const testVar = {
           fixDragBtn();
         }
       }
-      showFrameSize();    
+      showFrameSize();
     }
   }
   function dragend() {
@@ -171,7 +171,7 @@ const testVar = {
         window.editor.refresh();
     }
   }
-  if (window.addEventListener) {              
+  if (window.addEventListener) {
     document.getElementById("dragbar").addEventListener("mousedown", function(e) {dragstart(e);});
     document.getElementById("dragbar").addEventListener("touchstart", function(e) {dragstart(e);});
     window.addEventListener("mousemove", function(e) {dragmove(e);});
@@ -193,7 +193,7 @@ const testVar = {
     }
     document.getElementById('driveSaveModal').style.display='block'
   }
-  
+
   function click_google_loadbtn() {
     document.getElementById('driveLoadModal').style.display='block'
   }
@@ -230,7 +230,7 @@ const testVar = {
   //  window.editor.on("change", function () {window.editor.save();});
   }
   colorcoding();
-  
+
   function w3_getStyleValue(elmnt,style) {
       if (window.getComputedStyle) {
           return window.getComputedStyle(elmnt,null).getPropertyValue(style);
@@ -245,7 +245,7 @@ const testVar = {
   var developerKey = 'AIzaSyAMZDPXiGcCNWs1UCWG9LS6kkW5YiABfJ0';
   var CLIENT_ID = '451843133508-ckbr5r6ch1ofqbmh87oll4u6ltinqv2t.apps.googleusercontent.com';
   var SCOPES = ['https://www.googleapis.com/auth/drive.file'];
-  
+
   //Check if current user has authorized this application
   function checkAuth() {
       gapi.auth.authorize(
@@ -255,7 +255,7 @@ const testVar = {
           'immediate': true
       }, handleAuthResult);
   }
-  
+
   //Handle response from authorization server
   function handleAuthResult(authResult) {
       if (authResult && !authResult.error) {
@@ -263,7 +263,7 @@ const testVar = {
           loadApi();
       }
   }
-  
+
   // Initiate auth flow in response to user clicking authorize button
   function handleAuthClick(event,userClick) {
       userAction = userClick;
@@ -272,7 +272,7 @@ const testVar = {
           handleAuthResult);
       return false;
   }
-  
+
   // Load API library
   function loadApi() {
       gapi.client.load('drive', 'v3');
@@ -284,14 +284,14 @@ const testVar = {
           userAction="";
           document.getElementById('driveText').style.display='none';
           document.getElementById('driveSavedPanel').style.display='block';
-          createFileWithHTMLContent(document.getElementById('googleFileName').value,document.getElementById('textareaCode').value)     
+          createFileWithHTMLContent(document.getElementById('googleFileName').value,document.getElementById('textareaCode').value)
       }
       if (userAction=="open") {
           userAction="";
           createPicker();
       }
   }
-  
+
   // Create and render a Picker object for picking HTML file
   function createPicker() {
       if (pickerApiLoaded) {
@@ -315,7 +315,7 @@ const testVar = {
           getContentOfFile(docID);
       }
   }
-  
+
   //Get contents
   function getContentOfFile(theID){
       gapi.client.request({'path': '/drive/v3/files/'+theID+'?alt=media&key='+developerKey,'method': 'GET',callback: function ( theResponseJS, theResponseTXT ) {
@@ -329,18 +329,18 @@ const testVar = {
           }
       });
   }
-  
+
   var createFileWithHTMLContent = function(name,data,callback) {
       const boundary = '-------314159265358979323846';
       const delimiter = "\r\n--" + boundary + "\r\n";
       const close_delim = "\r\n--" + boundary + "--";
       const contentType = 'text/html';
-  
+
       var metadata = {
           'name': name,
           'mimeType': contentType
       };
-  
+
       var multipartRequestBody =
           delimiter +
           'Content-Type: application/json\r\n\r\n' +
@@ -349,7 +349,7 @@ const testVar = {
           'Content-Type: ' + contentType + '\r\n\r\n' +
           data +
           close_delim;
-  
+
       var request = gapi.client.request({
           'path': '/upload/drive/v3/files',
           'method': 'POST',
@@ -367,13 +367,13 @@ const testVar = {
       }
       request.execute(callback);
   }
-  
+
   if (navigator.userAgent.indexOf("MSIE") > 0 || navigator.userAgent.indexOf("Edge") > 0) {
       document.getElementById("saveGDriveBtn").style.display = "none";
       document.getElementById("loadGDriveBtn").style.display = "none";
   }
-  
-  
+
+
   function resetDriveSaveModal() {
       document.getElementById('driveSavedText').innerHTML='';
       document.getElementById('driveSaveModal').style.display='none'
@@ -384,22 +384,22 @@ const testVar = {
   function resetDriveLoadModal() {
       document.getElementById('driveLoadModal').style.display='none'
   }
-  
+
   function saveFile(code) {
       document.getElementById('preSave').style.display='none';
       if (code.length>20000) {
-          document.getElementById('errorSave').style.display='block';    
+          document.getElementById('errorSave').style.display='block';
           return;
       }
-      document.getElementById('postSave').style.display='block';    
+      document.getElementById('postSave').style.display='block';
       var paramObj = {};
       paramObj.code = code;
       var paramB = JSON.stringify(paramObj);
       var httpB = new XMLHttpRequest();
       httpB.open("POST", globalURL, true);
-  
+
       httpB.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  
+
       httpB.onreadystatechange = function() {
       if(httpB.readyState == 4 && httpB.status == 200) {
           if(httpB.responseText.substr(0,2) == "OK" ) {
@@ -416,13 +416,13 @@ const testVar = {
   function hideAndResetModal() {
       document.getElementById("saveModal").style.display = "none";
       document.getElementById('preSave').style.display = "block";
-      document.getElementById('errorSave').style.display = "none";    
+      document.getElementById('errorSave').style.display = "none";
       document.getElementById('postSave').style.display = "none";
       document.getElementById("saveModalSaved").style.display = "none";
       document.getElementById('saveDisclaimer').style.display= "none";
       document.getElementById('saveLoader').style.display = "block";
   }
-  
+
   function displayError() {
     document.getElementById("err_form").style.display = "block";
     hideSent();
@@ -439,25 +439,25 @@ const testVar = {
       var z = document.getElementById("menuButton");
       if (z.className.indexOf("w3-text-gray") == -1) {
           z.className += " w3-text-gray";
-      } else { 
+      } else {
           z.className = z.className.replace(" w3-text-gray", "");
       }
       if (z.className.indexOf("w3-gray") == -1) {
           z.className += " w3-gray";
-      } else { 
+      } else {
           z.className = z.className.replace(" w3-gray", "");
       }
       if (x.className.indexOf("w3-show") == -1) {
           x.className += " w3-show";
-      } else { 
+      } else {
           x.className = x.className.replace(" w3-show", "");
       }
       if (y.className.indexOf("w3-show") == -1) {
           y.className += " w3-show";
-      } else { 
+      } else {
           y.className = y.className.replace(" w3-show", "");
       }
-  
+
   }
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
@@ -473,7 +473,7 @@ const testVar = {
       if (event.target == document.getElementById("menuOverlay")) {
           openMenu();
       }
-      
+
   }
 
 }
